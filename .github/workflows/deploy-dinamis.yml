@@ -39,7 +39,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Deploy to EC2 via SSH and run docker compose
+      - name: Cleanup old containers on EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.AWS_HOST }}
@@ -47,8 +47,8 @@ jobs:
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           port: 22
           script: |
-            docker rm -f db-webdinamis || true
-            docker rm -f container-dinamis || true
+            docker ps -a --format "{{.Names}}" | grep "web-dinamis" | xargs -r docker rm -f
+            docker rm -f db-webdinamis container-dinamis container-statis || true
       - name: Copy Compose file EC2 via SCP
         uses: appleboy/scp-action@master
         with:
@@ -68,5 +68,5 @@ jobs:
           script: |
             export DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
             cd /home/ubuntu/container-dinamis/web-dinamis
-            docker compose pull 
+            docker compose pull
             docker compose up -d
