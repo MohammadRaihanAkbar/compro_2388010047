@@ -28,6 +28,8 @@ services:
       DB_USER: usercompro_2388010047
       DB_PASSWORD: 12345
       DB_NAME: dbcompro
+      NEXTAUTH_URL: http://13.238.128.212:3000
+      NEXTAUTH_SECRET: superrahasiabanget12345678901234
     depends_on:
       - db-webdinamis
 
