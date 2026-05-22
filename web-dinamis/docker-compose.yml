@@ -19,7 +19,7 @@ services:
     restart: always
 
   container-dinamis:
-    image: ${DOCKERHUB_USERNAME}/compro_2388010047:latest
+    image: ${DOCKERHUB_USERNAME}/web-dinamis:latest
     ports:
       - "3000:3000"
     restart: always
