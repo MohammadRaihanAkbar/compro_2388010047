@@ -5,7 +5,7 @@ services:
     environment:
       MARIADB_ROOT_PASSWORD: password!123
       MARIADB_DATABASE: dbcompro
-      MARIADB_USER: userwebdinamis_2388010047
+      MARIADB_USER: usercompro_2388010047
       MARIADB_PASSWORD: 12345
     volumes:
       - db_data:/var/lib/mysql
@@ -25,7 +25,7 @@ services:
     restart: always
     environment:
       DB_HOST: db-webdinamis
-      DB_USER: userwebdinamis_2388010047
+      DB_USER: usercompro_2388010047
       DB_PASSWORD: 12345
       DB_NAME: dbcompro
     depends_on:
