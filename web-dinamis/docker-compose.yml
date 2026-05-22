@@ -13,13 +13,13 @@ services:
     restart: always
 
   container-statis:
-    image: ${{ secrets.DOCKERHUB_USERNAME }}/compro_2388010047:latest
+    image: ${DOCKERHUB_USERNAME}/compro_2388010047:latest
     ports:
       - "80:80"
     restart: always
 
   container-dinamis:
-    image: ${{ secrets.DOCKERHUB_USERNAME }}/compro_2388010047:latest
+    image: ${DOCKERHUB_USERNAME}/compro_2388010047:latest
     ports:
       - "3000:3000"
     restart: always
@@ -29,7 +29,7 @@ services:
       DB_PASSWORD: 12345
       DB_NAME: dbcompro
     depends_on:
-      - db-webdinamis  
+      - db-webdinamis
 
 volumes:
   db_data: {}
